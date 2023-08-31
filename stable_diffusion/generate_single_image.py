@@ -30,7 +30,6 @@ if __name__ == '__main__':
         os.mkdir(build_dir)
     
     da = module.generate_image(text_prompts=prompt, width_height=[width, height], output_dir=cache_dir)
-    da[0].chunks[-1].chunks.plot_image_sprites(skip_empty=True, show_index=True, keep_aspect_ratio=True)
-    da[0].chunks[-1].chunks.save_gif(os.path.join(build_dir, "stable_diffusion_out-merged-result.gif"))
-    da[0].chunks[0].chunks.plot_image_sprites(skip_empty=True, show_index=True, keep_aspect_ratio=True)
-    da[0].chunks[0].chunks.save_gif(os.path.join(build_dir, "stable_diffusion_out-image-0-result.gif"))
+    output_file = os.path.join(build_dir, str(da[0].id) + ".png")
+    da[0].save_uri_to_file(output_file)
+    print("Image save to %s" % output_file)
