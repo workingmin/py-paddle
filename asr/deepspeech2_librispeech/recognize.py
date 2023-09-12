@@ -15,10 +15,11 @@ if __name__ == '__main__':
         exit(1)
 
     wav_file = sys.argv[1]
-    model = hub.Module(name='deepspeech2_librispeech', version='1.0.0')
+
     device = 'cpu'
     if paddle.get_device().startswith('gpu'):
         device = 'gpu'
     
-    text = model.speech_recognize(wav_file, device=device)
+    model = hub.Module(name='deepspeech2_librispeech', version='1.0.0')
+    text = model.speech_recognize(audio_file=wav_file, device=device)
     print(text)
