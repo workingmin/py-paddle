@@ -13,7 +13,7 @@ import paddlehub as hub
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         print("Usage:", sys.argv[0], "<sentence>")
-        exit(1)
+        sys.exit(1)
 
     sentence = sys.argv[1]
     sentences = []
